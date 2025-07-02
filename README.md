@@ -3,19 +3,30 @@
 
 I could not find a single thing that meets the following requirements, so decided to make my own:
 1. Instant file transfer between your devices (Like AirDrop). No waiting on an upload before you can download.
-2. A long file history to download files months or years after the initial P2P share.
+2. A long file history to download files years after the initial P2P share.
 
-### Not only does BlipBox do this, but also much more no other service offers:
+#### BlipBox also has:
 
 1. Support for sharing files across networks
 2. Easily sharable download links
 3. Very high file size limits: 20gb for files uploaded to the cloud, and unlimited file size without cloud uploads
-4. Easy to setup: Only 7 required steps
-5. Cross platform: Windows (Required), Mac, iOS, Android, and soon Linux
-6. A chat like interface with a good ui and embeds common file extensions (Discord)
-7. Not bloated. This repository has **less than 150 lines of code**, the rest is offloaded on to services you already use
-8. Not self hosted, doesn't eat your storage, and uses less than 0.1% background cpu
-9. Free and open source. Forever.
+4. A chat like interface with embed support (Discord)
+
+## Required Setup
+1. Download AutoHotKey v1, this .ahk file, and Blip
+2. Sign in to Blip on at least 2 of your devices you'll be sharing files between
+3. In Blip, go to settings > default save location. Pick an **empty** folder you want BlipBox to opperate in
+4. Create a new Discord server and go to Server Settings > Integrations > Create Webhook > Captain Hook > Copy Webhook URL
+5. Right click on the .ahk file you downloaded and select edit
+6. In the config at the top, set discordWebook to the link you copied, and watchFolder to the same folder you select in step 5
+7. Open the .ahk file in AutoHotKey
+Files you send from one device to another using blip that are under 200mb will now be automatically added to the folder you selected, uploaded to a file host, and shared to Discord. For files above 200mb, see the optional setup below
+
+### Optional Setup
+1. Create a Pixeldrain account, and create a free api key
+2. Copy the api key and paste it into the .ahk file's config
+3. If you want, customize the maxCatboxMB and maxPixelMB values. Descriptions for what they do are in the config
+4. If you want, you can change the name and profile picture of your Discord server and webhook, along with your device names in the Blip app
 
 ## How it works
 BlipBox combines 5 already existing services: AutoHotKey, Blip, Discord, Catbox, and Pixeldrain.
@@ -48,19 +59,3 @@ After the file has been successfully uploaded, Discord is contacted using a webh
 If your looking for something even easier to use, but less powerful, check out wormhole
 
 If you have any suggestions for a better replacement for Discord, Catbox, Pixeldrain, or really anything, please create an issue
-
-## Required Setup
-1. Download AutoHotKey v1, this .ahk file, and Blip
-2. Sign in to Blip on at least 2 of your devices you'll be sharing files between
-3. In Blip, go to settings > default save location. Pick an **empty** folder you want BlipBox to opperate in
-4. Create a new Discord server and go to Server Settings > Integrations > Create Webhook > Captain Hook > Copy Webhook URL
-5. Right click on the .ahk file you downloaded and select edit
-6. In the config at the top, set discordWebook to the link you copied, and watchFolder to the same folder you select in step 5
-7. Open the .ahk file in AutoHotKey
-Files you send from one device to another using blip that are under 200mb will now be automatically added to the folder you selected, uploaded to a file host, and shared to Discord. For files above 200mb, see the optional setup below
-
-## Optional Setup
-1. Create a Pixeldrain account, and create a free api key
-2. Copy the api key and paste it into the .ahk file's config
-3. If you want, customize the maxCatboxMB and maxPixelMB values. Descriptions for what they do are in the config
-4. If you want, you can change the name and profile picture of your Discord server and webhook, along with your device names in the Blip app
