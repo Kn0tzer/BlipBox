@@ -13,7 +13,7 @@ I could not find a single thing that meets the following requirements, so decide
 4. A chat like interface with embed support (Discord)
 
 ## Required Setup
-1. Download [Blip](https://blip.net/download) and BlipBox
+1. Download [Blip](https://blip.net/download) and [BlipBox](https://github.com/Kn0tzer/BlipBox/releases)
 2. Sign in to Blip on at least 2 of your devices you'll be sharing files between
 3. In Blip, go to settings > default save location. Pick an **empty** folder you want BlipBox to opperate in
 4. Create a new [Discord](https://discord.com/app) server and go to Server Settings > Integrations > Create Webhook > Captain Hook > Copy Webhook URL
@@ -33,7 +33,7 @@ Files you send from one device to another using blip that are under 200mb will n
 BlipBox combines 5 already existing services: [AutoHotKey](https://www.autohotkey.com/), [Blip](https://blip.net/), [Discord](https://discord.com), [Catbox](https://catbox.moe/), and [Pixeldrain](https://pixeldrain.com/).
 
 ### [AutoHotKey](https://www.autohotkey.com/)
-BlipBox itself is written in AutoHotKey, a fast, windows only scripting language, with good built in logging, and almost no boilerplate.
+BlipBox itself is written in AutoHotKey, a fast scripting language with built in logging.
 
 ### [Blip](https://blip.net/)
 Blip is the core of the p2p side of BlipBox. Blip allows for Airdrop like functionality across nearly all platforms, is fast, easy to setup, and supports file transfer across all networks.
