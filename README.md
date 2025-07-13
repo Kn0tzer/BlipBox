@@ -13,7 +13,7 @@ I could not find a single thing that meets the following requirements, so decide
 4. A chat like interface with embed support (Discord)
 
 ## Required Setup
-1. Download [Blip](https://blip.net/download) and [BlipBox](https://github.com/Kn0tzer/BlipBox/releases)
+1. Download [Blip](https://blip.net/download) and the [BlipBox](https://github.com/Kn0tzer/BlipBox/releases) zip folder.
 2. Sign in to Blip on at least 2 of your devices you'll be sharing files between
 3. In Blip, go to settings > default save location. Pick an **empty** folder you want BlipBox to opperate in
 4. Create a new [Discord](https://discord.com/app) server and go to Server Settings > Integrations > Create Webhook > Captain Hook > Copy Webhook URL
@@ -29,34 +29,11 @@ Files you send from one device to another using blip that are under 200mb will n
 4. If you want, you can change the name and profile picture of your Discord server and webhook, along with your device names in the Blip app
 5. If you want, create a shortcut to BlipBox.exe, and move the shortcut to C:\Users\your name\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Startup to have BlipBox automatically start with Windows
 
-## How it works
-BlipBox combines 5 already existing services: [AutoHotKey](https://www.autohotkey.com/), [Blip](https://blip.net/), [Discord](https://discord.com), [Catbox](https://catbox.moe/), and [Pixeldrain](https://pixeldrain.com/).
+## How It Works
+It starts with [AutoHotKey](https://www.autohotkey.com/), which runs the compiled BlipBox.exe script in the background.
 
-### [AutoHotKey](https://www.autohotkey.com/)
-BlipBox itself is written in AutoHotKey, a fast scripting language with built in logging.
+To transfer a file, you either open the [Blip app](https://blip.net/) or share it to the Blip app. It's then transferred using p2p, and saved to a folder AutoHotKey is watching.
 
-### [Blip](https://blip.net/)
-Blip is the core of the p2p side of BlipBox. Blip allows for Airdrop like functionality across nearly all platforms, is fast, easy to setup, and supports file transfer across all networks.
+Once AutoHotKey detects an update in the folder, the file is uploaded to [Catbox](https://catbox.moe/) (If <200mb, infinite file storage) or [Pixeldrain](https://pixeldrain.com/) (>200mb, less than 20gb. 4 month file storage).
 
-### [Discord](https://discord.com)
-Discord is used as the ui for BlipBox. It's cross platform, commonly used, supports webhooks, and as far as I can tell, the best, easiest option for this use case.
-
-### [Catbox](https://catbox.moe/)
-Catbox is the main file host for BlipBox. Files are stored "until the heat death of the universe", with a very reasonable 200mb file size limit, along with hotlink support which allows for Discord embedding.
-
-### [Pixeldrain](https://pixeldrain.com/)
-Pixeldrain is used as the backup host when files are too large to be stored on Catbox. Pixeldrain allows 6gb of downloading at full speed per day. Any more is limited to 1 mb/s. It's file size limit is 20gb on the free plan, and files expire after 4 months.
-
-### The workflow
-It starts with AutoHotKey, which runs the compiled BlipBox script continuously in the background, using less than 0.1% cpu usage.
-
-Then, whenever you want to transfer a file, you either open the Blip app, share it using any share button, or use the right click menu. It's then transferred over p2p, and saved to a folder AutoHotKey is watching for updates.
-
-Once a change in the Blip folder is detected, the file is uploaded to catbox or pixeldrain using their api. The host is chosen depending on file size, which is customizable in the config. Catbox is generally preferred.
-
-After the file has been successfully uploaded, Discord is contacted using a webhook. The link to the file download is sent in a message in the Discord server you made, and if uploaded to Catbox, automatically embedded.
-
-### Sidenotes
-If your looking for something even easier to use, but less powerful, check out [Wormhole.app](https://wormhole.app/)
-
-If you have any suggestions for a better replacement for Discord, Catbox, Pixeldrain, or really anything, please create an issue
+After the file is uploaded, Discord is contacted using a webhook. The download link is then sent in the Discord server you made, and if uploaded to Catbox, automatically embedded.
